@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <!--<p th:text="${saludo}"></p>-->
+    <h1>Mostrando los datos del estudiante</h1>
+    <br>
+    <a th:href="@{/registrar}">Registrar Estudiante</a>
+    <div th:if="${estudiantes != null and !estudiantes.empty}">
+        <table>
+            <tr>
+                <th>Nombre</th>
+                <th>Email</th>
+                <th>Teléfono</th>
+                <th>Programa</th>
+                <th>Modificar</th>
+                <th>Eliminar</th>
+            </tr>
+
+            <tr th:each="estudiante : ${estudiantes}">
+                <td th:text="${estudiante.nombre}"></td>
+                <td th:text="${estudiante.email}"></td>
+                <td th:text="${estudiante.telefono}"></td>
+                <td th:text="${estudiante.programa}"></td>
+                <td>
+                    <a th:href="@{/modificar/} + ${estudiante.id}" th:text="Modificar"></a>
+                </td>
+                <td>
+                    <a th:href="@{/eliminar/} + ${estudiante.id}" th:text="Eliminar"></a>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div th:if="${estudiantes == null or estudiantes.empty}">
+        <h3>No hay estudiantes registrados.</h3>
+    </div>
+</body>
+</html>
