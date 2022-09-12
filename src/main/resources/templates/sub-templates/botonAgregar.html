@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Botón Agregar</title>
+    <section th:replace="plantilla :: head"></section>
+</head>
+<body>
+    <section th:fragment="btnAgregar" class="">
+        <div class="container mb-3">
+            <div class="row">
+                <div class="col-3" sec:authorize="hasRole{'ROLE_ADMIN'}">
+                    <a href="#" class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#agregarEstudiante">
+                        <i class="fa-solid fa-user-plus"></i> Agregar
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+</body>
+</html>

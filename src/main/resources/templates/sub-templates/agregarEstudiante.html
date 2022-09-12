@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Title</title>
+    <section th:replace="plantilla :: head"></section>
+</head>
+<body>
+    <section th:fragment="agregarEstudiante">
+        <div id="agregarEstudiante" class="modal" tabindex="-1">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title">Agregar Estudiante</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <form th:action="@{/guardar}" method="post" th:object="${estudiante}">
+                        <div class="modal-body">
+                            <div class="input-group mb-3">
+                                <span class="input-group-text" id="iG-nombre">Nombre</span>
+                                <input type="text" class="form-control" id="nombre" name="nombre" aria-describedby="iG-nombre">
+                            </div>
+                            <div class="input-group mb-3">
+                                <span class="input-group-text" id="iG-email">Email</span>
+                                <input type="text" class="form-control" id="email" name="email" aria-describedby="iG-email">
+                            </div>
+                            <div class="input-group mb-3">
+                                <span class="input-group-text" id="iG-telefono">Teléfono</span>
+                                <input type="text" class="form-control" id="telefono" name="telefono" aria-describedby="iG-telefono">
+                            </div>
+                            <div class="input-group mb-3">
+                                <span class="input-group-text" id="iG-programa">Programa</span>
+                                <input type="text" class="form-control" id="programa" name="programa" aria-describedby="iG-programa">
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                            <button type="submit" class="btn btn-primary">Registrar</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+</body>
+</html>

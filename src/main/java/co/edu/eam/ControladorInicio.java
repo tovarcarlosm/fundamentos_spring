@@ -29,6 +29,7 @@ public class ControladorInicio {
         var estudiantes = estudianteService.listar();
         log.info("Inició sesión el usuario: " + user);
         modelo.addAttribute("estudiantes", estudiantes);
+        modelo.addAttribute("totalEstudiantes", estudiantes.size());
         return "index";
     }
 
@@ -40,7 +41,7 @@ public class ControladorInicio {
     @PostMapping("/guardar")
     public String guardar(@Valid Estudiante estudiante, Errors errors){
         if(errors.hasErrors()){
-            return "actualizar";
+            return "redirect:/";
         }
 
         estudianteService.guardar(estudiante);

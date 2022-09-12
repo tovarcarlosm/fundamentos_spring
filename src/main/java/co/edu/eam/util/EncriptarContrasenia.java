@@ -4,7 +4,7 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 public class EncriptarContrasenia {
     public static void main(String[] args) {
-        var pass = "docente";
+        var pass = "coordinador";
         System.out.println("Contraseña encriptada: " + encriptar(pass));
     }
 

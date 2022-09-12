@@ -20,17 +20,9 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         return new BCryptPasswordEncoder();
     }
 
-    @Override
-    protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-        //super.configure(auth);
-        auth.inMemoryAuthentication()
-                .withUser("estudiante")
-                .password("{noop}estudiante")
-                .roles("USER")
-                .and()
-                .withUser("docente")
-                .password("{noop}docente")
-                .roles("ADMIN", "USER");
+    @Autowired
+    public void configurerGlobal (AuthenticationManagerBuilder auth) throws Exception {
+        auth.userDetailsService(userDetailsService).passwordEncoder(passwordEncoder());
     }
 
     @Override

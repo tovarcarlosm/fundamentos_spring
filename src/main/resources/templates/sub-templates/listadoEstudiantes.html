@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Listado Estudiantes</title>
+    <section th:replace="plantilla :: head"></section>
+</head>
+<body>
+    <section th:fragment="listadoEstudiantes">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-9">
+                    <div class="card">
+                        <div class="card-header">
+                            <h3>Estudiantes</h3>
+                        </div>
+                        <div th:if="${estudiantes != null and !estudiantes.empty}">
+                            <table class="table table-striped">
+                                <tr>
+                                    <th>Nombre</th>
+                                    <th>Email</th>
+                                    <th>Teléfono</th>
+                                    <th>Programa</th>
+                                    <th>Modificar</th>
+                                    <th>Eliminar</th>
+                                </tr>
+
+                                <tr th:each="estudiante : ${estudiantes}">
+                                    <td th:text="${estudiante.nombre}"></td>
+                                    <td th:text="${estudiante.email}"></td>
+                                    <td th:text="${estudiante.telefono}"></td>
+                                    <td th:text="${estudiante.programa}"></td>
+                                    <td sec:authorize="hasRole('ROLE_ADMIN')">
+                                        <a type="button" class="btn btn-warning" th:href="@{/modificar/} + ${estudiante.id}">
+                                            <i class="fa-solid fa-user-pen"></i>
+                                        </a>
+                                    </td>
+                                    <td>
+                                        <a type="button" class="btn btn-danger" th:href="@{/eliminar/} + ${estudiante.id}">
+                                            <i class="fa-solid fa-user-xmark"></i>
+                                        </a>
+                                    </td>
+                                </tr>
+                            </table>
+                        </div>
+                        <div th:if="${estudiantes == null or estudiantes.empty}">
+                            <h3>No hay estudiantes registrados.</h3>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="card bg-primary bg-opacity-75 text-center text-white">
+                        <div class="card-body">
+                            <h3>Total Estudiantes</h3>
+                            <h2>
+                                <i class="fa-solid fa-users"></i>
+                                [[${totalEstudiantes}]]
+                            </h2>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</body>
+</html>
