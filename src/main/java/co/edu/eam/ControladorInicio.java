@@ -5,6 +5,8 @@ import co.edu.eam.domain.Estudiante;
 import co.edu.eam.service.EstudianteService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
+import org.springframework.security.core.userdetails.User;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.Errors;
@@ -23,8 +25,9 @@ public class ControladorInicio {
     private EstudianteService estudianteService;
 
     @GetMapping("/")
-    public String mostrar(Model modelo){
+    public String mostrar(Model modelo, @AuthenticationPrincipal User user){
         var estudiantes = estudianteService.listar();
+        log.info("Inició sesión el usuario: " + user);
         modelo.addAttribute("estudiantes", estudiantes);
         return "index";
     }
