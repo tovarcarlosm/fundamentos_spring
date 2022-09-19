@@ -33,10 +33,10 @@ public class ControladorInicio {
         return "index";
     }
 
-    @GetMapping("/registrar")
+    /*@GetMapping("/registrar")
     public String registrar(Estudiante estudiante){
         return "actualizar";
-    }
+    }*/
 
     @PostMapping("/guardar")
     public String guardar(@Valid Estudiante estudiante, Errors errors){
@@ -52,7 +52,7 @@ public class ControladorInicio {
     public String modificar(Estudiante estudiante, Model model){
         estudiante = estudianteService.buscar(estudiante);
         model.addAttribute("estudiante", estudiante);
-        return "actualizar";
+        return "editar";
     }
 
     @GetMapping("/eliminar/{id}")

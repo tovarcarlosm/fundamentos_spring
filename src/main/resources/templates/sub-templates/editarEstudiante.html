@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <section th:replace="plantilla :: head"></section>
+</head>
+<body>
+    <section th:fragment="editarEstudiante">
+        <form th:action="@{/guardar}" method="post" th:object="${estudiante}">
+            <input type="hidden" name="id" th:field="*{id}">
+            <section th:replace="sub-templates/botonRegresar :: btnRegresar"></section>
+            <div class="container">
+                <div class="row">
+                    <div class="col">
+                        <div class="card">
+                            <div class="card-header">
+                                Actualizar Estudiante
+                            </div>
+                            <div class="card-body">
+                                <div class="input-group mb-3">
+                                    <span class="input-group-text" id="iG-nombre">Nombre</span>
+                                    <input type="text" class="form-control" id="nombre" name="nombre" th:field="*{nombre}" aria-describedby="iG-nombre" required>
+                                    <span th:if="${#fields.hasErrors('nombre')}" th:errors="*{nombre}">Error en el nombre</span>
+                                </div>
+                                <div class="input-group mb-3">
+                                    <span class="input-group-text" id="iG-email">Email</span>
+                                    <input type="email" class="form-control" id="email" name="email" th:field="*{email}" aria-describedby="iG-email" required>
+                                    <span th:if="${#fields.hasErrors('email')}" th:errors="*{email}">Error en el email</span>
+                                </div>
+                                <div class="input-group mb-3">
+                                    <span class="input-group-text" id="iG-telefono">Teléfono</span>
+                                    <input type="text" class="form-control" id="telefono" name="telefono" th:field="*{telefono}" aria-describedby="iG-telefono" required>
+                                    <span th:if="${#fields.hasErrors('telefono')}" th:errors="*{telefono}">Error en el telefono</span>
+                                </div>
+                                <div class="input-group mb-3">
+                                    <span class="input-group-text" id="iG-programa">Programa</span>
+                                    <input type="text" class="form-control" id="programa" name="programa" th:field="*{programa}" aria-describedby="iG-programa" required>
+                                    <span th:if="${#fields.hasErrors('programa')}" th:errors="*{programa}">Error en el programa</span>
+                                </div>
+
+                                <button type="submit" class="btn btn-primary">Guardar</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </section>
+</body>
+</html>

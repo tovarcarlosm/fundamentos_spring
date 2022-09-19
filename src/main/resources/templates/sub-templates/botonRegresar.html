@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.w3.org/1999/xhtml">
+<head>
+    <section th:replace="plantilla :: head"></section>
+</head>
+<body>
+    <section th:fragment="btnRegresar">
+        <div id="acciones">
+            <div class="container">
+                <div class="row">
+                    <div class="col-3" sec:authorize="hasRole{'ROLE_ADMIN'}">
+                        <a th:href="@{/}" class="btn btn-info m-3">
+                            <i class="fa-solid fa-arrow-left"></i> Regresar
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</body>
+</html>

@@ -19,7 +19,7 @@ public class Estudiante implements Serializable {
     @Size(min=1, max=40)
     private String nombre;
 
-    @Email(regexp = "^([\\w-\\.]+){1,64}@([\\w&&[^_]]+){2,255}.[a-z]{2,}$")
+    @Email(regexp = "^[\\w-\\.]+@([\\w-]+\\.)+[\\w-]{2,4}$")
     @NotEmpty
     private String email;
 
